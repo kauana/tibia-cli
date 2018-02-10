@@ -14,6 +14,10 @@ def main():
             html = getWebsiteInfo(charURL)
             character = Character(html)
             character.print_info()
+    elif sys.argv[1] == '--help':
+        file = open('help.txt', 'r')
+        print (file.read())
+        file.close()
 
     else:
         print("Invalid command. "

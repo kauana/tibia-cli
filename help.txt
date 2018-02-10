@@ -1,0 +1,15 @@
+
+            _____ _ _    _         ___ _    ___
+           |_   _(_) |__(_)__ _   / __| |  |_ _|
+             | | | | '_ \ / _` | | (__| |__ | |
+             |_| |_|_.__/_\__,_|  \___|____|___|
+
+
+Welcome to Tibia CLI!
+
+If you are dying to know about characters in the game Tibia, I am here to help
+you!
+
+usage:
+- ./tibia-cli -c <character_name>: will search for <character_name> and
+print the character's information in the terminal.
