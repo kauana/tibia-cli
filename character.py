@@ -3,12 +3,11 @@ import requests
 from utilities import list_to_string
 
 class Character:
-    # This class handles the character informantion from the website
-    def __init__(self, root):
-        # XPath returns as array for all info. Method printInfo will deal with
-        # the display of information and how it should look like to the user
-        # The Xpath searches for the info necessary in the table on the tibia.com website
 
+    # init initializes the character object with information from the tibia.com
+    # websitee.
+    # The xpath returns the result as an array for all the table fields.
+    def __init__(self, root):
         table_address = '//*[@id=\"characters\"]/div[5]/div/div/table[1]/tr[td//text()'
 
         self.name = root.xpath(table_address + '[contains(., \'Name:\')]]/td[2]/text()')
@@ -26,11 +25,20 @@ class Character:
         self.last_login = root.xpath(table_address + '[contains(., \'Last Login:\')]]/td[2]/text()')
         self.account_status = root.xpath(table_address + '[contains(., \'Account\')]]/td[2]/text()')
 
+    def valid_char(self):
+        if not self.name:
+            print("Character does not exist.")
+            return False
+        return True
 
+    # Prints character's information
+    # If information is enclosed by if statements, the information is optional
+    # Else, it is mandatory and all characters should have it
     def print_info(self):
-        # prints with if statements are optional for characters, else mandatory
-
+        if self.valid_char() == False:
+            return
         print ("Name: " + list_to_string(self, self.name))
+
         if self.former_names:
             print ("Former Names: " + list_to_string(self, self.former_names))
         print("Sex: " + list_to_string(self, self.sex))
